@@ -13,6 +13,7 @@ from transformers import AutoFeatureExtractor, AutoModelForImageClassification
 import csv
 from datetime import datetime
 
+
 gpt_api_key = os.getenv("gpt_api_key")
 
 LOG_FILE = "food_log.csv"
@@ -202,8 +203,3 @@ if os.path.exists(LOG_FILE):
 else:
     st.info("No meals logged yet!")
 
-
-from dexcom_reader import Dexcom
-dexcom = Dexcom("your_dexcom_username", "your_password")
-glucose = dexcom.get_current_glucose_reading()
-print(glucose.value)
