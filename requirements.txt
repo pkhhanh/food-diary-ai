@@ -1,8 +1,7 @@
 streamlit
+pillow
+pillow-heif
 torch
 transformers
-Pillow
-pillow-heif
-openai
-pandas
-
+requests
+python-dotenv
