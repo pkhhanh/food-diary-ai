@@ -127,6 +127,7 @@ if uploaded_file:
         if st.button("Analyze and Log Food"):
             with st.spinner("Analyzing..."):
                 try:                    
+                    food_name = identify_food_with_gpt(image, gpt_api_key)
                     st.success(f"🍽️ GPT-4 thinks this is: **{food_name}**")
 
                     # Get nutrition info and advice
