@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 load_dotenv(override=True)
 import os
+import pandas as pd
 from openai import OpenAI
 import re
 import requests
@@ -176,9 +177,25 @@ if uploaded_file:
 
 st.header("📊 Your Food Diary")
 
+import pandas as pd  # If not already imported at the top
+
 if os.path.exists(LOG_FILE):
     df = pd.read_csv(LOG_FILE)
-    st.dataframe(df)
-    st.download_button("Download Log as CSV", data=df.to_csv(index=False), file_name="food_log.csv")
 else:
-    st.info("No meals logged yet!")
+    df = pd.DataFrame(columns=[
+        "Timestamp", "Image Filename", "Food", 
+        "Calories", "Protein (g)", "Carbs (g)", "Fat (g)", 
+        "GI", "Risk Level", "Glucose (mg/dL)"
+    ])
+
+edited_df = st.data_editor(
+    df,
+    num_rows="dynamic",  # allows adding/deleting rows!
+    use_container_width=True,
+    key="food_diary_editor"
+)
+
+if st.button("Save Changes"):
+    edited_df.to_csv(LOG_FILE, index=False)
+    st.success("Diary updated!")
+
