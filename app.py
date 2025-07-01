@@ -29,10 +29,12 @@ if not os.path.exists(LOG_FILE):
             "GI", "Risk Level", "Glucose (mg/dL)"
         ])
 
-st.title("🍽️ AI Food Detector")
+st.title("🍽️ Quick Food Diary")
+
+st.write("📱 **On your phone? Tap below to snap a meal photo or pick from your gallery!**")
 
 uploaded_file = st.file_uploader(
-    "Upload a photo of your meal",
+    "Upload or take a photo of your meal:",
     type=["jpg", "jpeg", "png", "heic"]
 )
 
