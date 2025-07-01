@@ -1,8 +1,12 @@
 streamlit
+streamlit-authenticator
+pandas
+openai
 pillow
 pillow-heif
 torch
 transformers
-requests
 python-dotenv
-openai
+gspread
+gspread-dataframe
+google-auth
